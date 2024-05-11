@@ -5,7 +5,6 @@ namespace Gradebook.Domain.Exceptions {
         public string Email { get; set; }
         public StudentAlreadyExistsException(string email) : base($"Student with email: {email} already exist.")
             => Email = email; 
-
         public override HttpStatusCode StatusCode => HttpStatusCode.Conflict;
     }
 }

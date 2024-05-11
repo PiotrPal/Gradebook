@@ -1,5 +1,7 @@
 ﻿using Gradebook.Domain.Abstractions;
 using Gradebook.Domain.Entities;
+using Gradebook.Infrastructure.Context;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,33 +10,38 @@ using System.Threading.Tasks;
 
 namespace Gradebook.Infrastructure.Repositoires {
     internal class StudentRepository : IStudentRepository {
+        private GradebookDbContext _dbContext;
 
-        public Task<IEnumerable<Student>> GetAllAsync(CancellationToken cancellation = default) {
-            throw new NotImplementedException();
+        public StudentRepository(GradebookDbContext dbContext) {
+            _dbContext = dbContext;
         }
 
-        public Task<Student> GetByIDAsync(int id, CancellationToken cancellation = default) {
-            throw new NotImplementedException();
+        public async Task<IEnumerable<Student>> GetAllAsync(CancellationToken cancellation = default) {
+            return await _dbContext.Students.ToListAsync(cancellation);
         }
 
-        public Task<Student> GetByEmailAsync(string email, CancellationToken cancellation = default) {
-            throw new NotImplementedException();
+        public async Task<Student> GetByIDAsync(int id, CancellationToken cancellation = default) {
+            return await _dbContext.Students.SingleOrDefaultAsync(s => s.ID == id, cancellation);
+        }
+
+        public  async Task<Student> GetByEmailAsync(string email, CancellationToken cancellation = default) {
+            return await _dbContext.Students.SingleOrDefaultAsync(s => s.Email == email, cancellation);
         }
 
         public Task<bool> IsAlreadyExistAsync(string email, CancellationToken cancellation = default) {
-            throw new NotImplementedException();
+            return _dbContext.Students.AnyAsync(s => s.Email == email, cancellation);
         }
 
         public void Add(Student student) {
-            throw new NotImplementedException();
+            _dbContext.Students.Add(student);
         }
 
         public void Update(Student student) {
-            throw new NotImplementedException();
+            _dbContext.Students.Update(student);
         }
 
         public void Delete(Student student) {
-            throw new NotImplementedException();
+            _dbContext.Students.Remove(student);
         }
     }
 }
