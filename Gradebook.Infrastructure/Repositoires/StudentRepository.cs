@@ -16,9 +16,7 @@ namespace Gradebook.Infrastructure.Repositoires {
             _dbContext = dbContext;
         }
 
-        public async Task<IEnumerable<Student>> GetAllAsync(CancellationToken cancellation = default) {
-            return await _dbContext.Students.ToListAsync(cancellation);
-        }
+        //get all async -> przeniesione do readonly
 
         public async Task<Student> GetByIDAsync(int id, CancellationToken cancellation = default) {
             return await _dbContext.Students.SingleOrDefaultAsync(s => s.ID == id, cancellation);
