@@ -3,15 +3,18 @@ using Gradebook.Domain.Abstractions;
 using MediatR;
 using Gradebook.Domain.Exceptions;
 using Gradebook.Domain.Entities;
+using AutoMapper;
 
 namespace Gradebook.App.Commands.Students.AddStudent {
     internal class AddStudentCommandHandler : IRequestHandler<AddStudentCommand, StudentDto> {
         private readonly IStudentRepository _studentRepository;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
-        public AddStudentCommandHandler(IStudentRepository studentRepository, IUnitOfWork unitOfWork) {
+        public AddStudentCommandHandler(IStudentRepository studentRepository, IUnitOfWork unitOfWork, IMapper mapper) {
             _studentRepository = studentRepository;
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
         public async Task<StudentDto> Handle(AddStudentCommand request, CancellationToken cancellationToken) {
             bool isAlreadyExist = await _studentRepository.IsAlreadyExistAsync(request.Email, cancellationToken);
@@ -30,14 +33,8 @@ namespace Gradebook.App.Commands.Students.AddStudent {
             _studentRepository.Add(newStudent);
             await _unitOfWork.SaveChangesAsycn();
 
-            var studentDto = new StudentDto {
-                ID = newStudent.ID,
-                FirstName = newStudent.FirstName,
-                LastName = newStudent.LastName,
-                Email = newStudent.Email,
-                Age = DateTime.Now.Year - newStudent.DateOfBirth.ToDateTime(TimeOnly.Parse("00:00")).Year,
-                YearEnrolled = newStudent.YearEnrolled
-            };
+            var studentDto = _mapper.Map<StudentDto>(newStudent);
+
             return studentDto;
         }
     }

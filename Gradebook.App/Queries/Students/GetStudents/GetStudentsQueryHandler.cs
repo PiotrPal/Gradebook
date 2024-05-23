@@ -1,4 +1,5 @@
-﻿using Gradebook.App.Dtos;
+﻿using AutoMapper;
+using Gradebook.App.Dtos;
 using Gradebook.Domain.Abstractions;
 using MediatR;
 using System;
@@ -10,20 +11,16 @@ using System.Threading.Tasks;
 namespace Gradebook.App.Queries.Students.GetStudents {
     internal class GetStudentsQueryHandler : IRequestHandler<GetStudentsQuery, IEnumerable<StudentDto>> {
         private readonly IStudentReadOnlyRepository _studentReadOnlyRepository;
-        public GetStudentsQueryHandler(IStudentReadOnlyRepository studentReadOnlyRepository) {
+        private readonly IMapper _mapper;
+
+        public GetStudentsQueryHandler(IStudentReadOnlyRepository studentReadOnlyRepository, IMapper mapper) {
             _studentReadOnlyRepository = studentReadOnlyRepository;
+            _mapper = mapper;
         }
         public async Task<IEnumerable<StudentDto>> Handle(GetStudentsQuery request, CancellationToken cancellationToken) {
             var students = await _studentReadOnlyRepository.GetAllAsync(cancellationToken);
 
-            var studentsDto = students.Select(x => new StudentDto {
-                ID = x.ID,
-                FirstName = x.FirstName,
-                LastName = x.LastName,
-                Email = x.Email,
-                Age = DateTime.Now.Year - x.DateOfBirth.ToDateTime(TimeOnly.Parse("00:00")).Year,
-                YearEnrolled = x.YearEnrolled
-            });
+            var studentsDto = _mapper.Map<IEnumerable<StudentDto>>(students);
             return studentsDto;
 
         }

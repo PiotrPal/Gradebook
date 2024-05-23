@@ -8,7 +8,7 @@ namespace Gradebook.App {
         public static IServiceCollection AddAplication(this IServiceCollection services) {
             var executingAssembly = Assembly.GetExecutingAssembly();
             services.AddMediatR(executingAssembly);
-
+            services.AddAutoMapper(executingAssembly);
             return services;
         }
     }
