@@ -1,13 +1,7 @@
-﻿using Gradebook.App.Dtos;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Gradebook.App.Configuration.Commands;
 
 namespace Gradebook.App.Commands.Students.UpdateStudent {
-    public class UpdateStudentCommand : IRequest {
+    public class UpdateStudentCommand : ICommand {
         public int ID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

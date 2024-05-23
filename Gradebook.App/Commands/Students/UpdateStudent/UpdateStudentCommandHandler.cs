@@ -1,14 +1,9 @@
-﻿using Gradebook.Domain.Abstractions;
+﻿using Gradebook.App.Configuration.Commands;
+using Gradebook.Domain.Abstractions;
 using Gradebook.Domain.Exceptions;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Gradebook.App.Commands.Students.UpdateStudent {
-    internal class UpdateStudentCommandHandler : IRequestHandler<UpdateStudentCommand> {
+    internal class UpdateStudentCommandHandler : ICommandHandler<UpdateStudentCommand> {
         
         private readonly IStudentRepository _studentRepository;
         private readonly IUnitOfWork _unitOfWork;

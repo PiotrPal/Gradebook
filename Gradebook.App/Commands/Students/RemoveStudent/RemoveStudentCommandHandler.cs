@@ -1,10 +1,9 @@
-﻿using Gradebook.App.Dtos;
+﻿using Gradebook.App.Configuration.Commands;
 using Gradebook.Domain.Abstractions;
 using Gradebook.Domain.Exceptions;
-using MediatR;
 
 namespace Gradebook.App.Commands.Students.RemoveStudent {
-    internal class RemoveStudentCommandHandler : IRequestHandler<RemoveStudentCommand> {
+    internal class RemoveStudentCommandHandler : ICommandHandler<RemoveStudentCommand> {
 
         private readonly IStudentRepository _studentRepository;
         private readonly IUnitOfWork _unitOfWork;
