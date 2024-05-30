@@ -2,9 +2,11 @@
 using Gradebook.App.Dtos;
 using Gradebook.App.Queries.Students.GetStudentByID;
 using Gradebook.Domain.Abstractions;
+using MediatR;
 
 namespace Gradebook.App.Queries.Students.GetStudentByEmail {
-    internal class GetStudentByEmailQueryHandler {
+    internal class GetStudentByEmailQueryHandler : IRequestHandler<GetStudentByEmailQuery, StudentDto> {
+
         private readonly IStudentRepository _studentRepository;
         private readonly IMapper _mapper;
 

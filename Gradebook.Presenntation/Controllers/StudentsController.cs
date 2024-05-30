@@ -60,7 +60,7 @@ public class StudentsController : Controller {
         return NoContent();
     }
 
-    [HttpDelete("{id}")]
+    [HttpDelete("{ID}")]
     [SwaggerOperation("Remove student")]
     [ProducesResponseType((int)HttpStatusCode.NoContent)]
     public async Task<ActionResult> Delete([FromRoute] int ID) {
