@@ -1,8 +1,10 @@
 ﻿using FluentValidation;
 using Gradebook.App.Commands.Students.AddStudent;
 using Gradebook.App.Commands.Students.UpdateStudent;
+using Gradebook.App.Middlewares;
 using Gradebook.Domain.Abstractions;
 using MediatR;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
@@ -17,7 +19,14 @@ namespace Gradebook.App {
 
             services.AddScoped<IValidator<AddStudentCommand>, AddStudentCommandValidation>();
             services.AddScoped<IValidator<UpdateStudentCommand>, UpdateStudentCommandValidation>();
+
+            services.AddTransient<ExceptionHandlingMiddleware>();
             return services;
+        }
+        public static IApplicationBuilder UseApplication(this WebApplication app) {
+            app.UseMiddleware<ExceptionHandlingMiddleware>();
+
+            return app;
         }
     }
 }
