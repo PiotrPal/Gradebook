@@ -27,8 +27,8 @@ namespace Gradebook.App.Middlewares {
             var response = new {
                 title = exception.Message,
                 status = statusCode,
-                errors = 
-            };
+                //errors = 
+                };
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = statusCode;
             await context.Response.WriteAsync(JsonSerializer.Serialize(response));

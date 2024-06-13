@@ -5,15 +5,19 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A9826F31-6A5F-4406-9D7C-56C2A9722E9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gradebook.Domain", "Gradebook.Domain\Gradebook.Domain.csproj", "{C93BC5B9-02B0-4502-8436-093F3861EF1A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gradebook.Domain", "Gradebook.Domain\Gradebook.Domain.csproj", "{C93BC5B9-02B0-4502-8436-093F3861EF1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gradebook.App", "Gradebook.App\Gradebook.App.csproj", "{8B7FD16E-A5C6-462F-97A2-AB615CEC3DE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gradebook.App", "Gradebook.App\Gradebook.App.csproj", "{8B7FD16E-A5C6-462F-97A2-AB615CEC3DE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gradebook.Infrastructure", "Gradebook.Infrastructure\Gradebook.Infrastructure.csproj", "{9A658371-A485-4201-A013-E4222C5D86A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gradebook.Infrastructure", "Gradebook.Infrastructure\Gradebook.Infrastructure.csproj", "{9A658371-A485-4201-A013-E4222C5D86A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gradebook.Presenntation", "Gradebook.Presenntation\Gradebook.Presenntation.csproj", "{37B20034-C914-4593-A428-6F2401ECE2D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gradebook.Presenntation", "Gradebook.Presenntation\Gradebook.Presenntation.csproj", "{37B20034-C914-4593-A428-6F2401ECE2D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gradebook.API", "Gradebook.API\Gradebook.API.csproj", "{E9984B68-6027-4096-BE9C-29A2B11BFDCB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gradebook.API", "Gradebook.API\Gradebook.API.csproj", "{E9984B68-6027-4096-BE9C-29A2B11BFDCB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{1F375273-FA35-425D-AC67-296417E019EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gradebook.UnitTests", "Gradebook.UnitTests\Gradebook.UnitTests.csproj", "{28C5311D-9022-4123-8176-1E55F6A5BA3B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +45,10 @@ Global
 		{E9984B68-6027-4096-BE9C-29A2B11BFDCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9984B68-6027-4096-BE9C-29A2B11BFDCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9984B68-6027-4096-BE9C-29A2B11BFDCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28C5311D-9022-4123-8176-1E55F6A5BA3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28C5311D-9022-4123-8176-1E55F6A5BA3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28C5311D-9022-4123-8176-1E55F6A5BA3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28C5311D-9022-4123-8176-1E55F6A5BA3B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,6 +59,7 @@ Global
 		{9A658371-A485-4201-A013-E4222C5D86A1} = {A9826F31-6A5F-4406-9D7C-56C2A9722E9A}
 		{37B20034-C914-4593-A428-6F2401ECE2D6} = {A9826F31-6A5F-4406-9D7C-56C2A9722E9A}
 		{E9984B68-6027-4096-BE9C-29A2B11BFDCB} = {A9826F31-6A5F-4406-9D7C-56C2A9722E9A}
+		{28C5311D-9022-4123-8176-1E55F6A5BA3B} = {1F375273-FA35-425D-AC67-296417E019EA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0053C0AA-02E2-47C5-B063-214037577273}

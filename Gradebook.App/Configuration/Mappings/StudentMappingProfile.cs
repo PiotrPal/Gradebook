@@ -7,7 +7,8 @@ namespace Gradebook.App.Configuration.Mappings {
         public StudentMappingProfile()
         {
             CreateMap<Student,StudentDto>()
-                .ForMember(dest => dest.Age, conf => conf.MapFrom(model => DateTime.Now.Year - model.DateOfBirth.ToDateTime(TimeOnly.Parse("00:00")).Year));
+                .ForMember(dest => dest.Age, conf => conf.MapFrom(
+                    model => DateTime.Now.Year - model.DateOfBirth.ToDateTime(TimeOnly.Parse("00:00")).Year));
         }
     }
 }
