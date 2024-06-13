@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using Gradebook.App.Commands.Students.AddStudent;
 using Gradebook.App.Commands.Students.UpdateStudent;
+using Gradebook.App.Configuration.Validation;
 using Gradebook.App.Middlewares;
 using Gradebook.Domain.Abstractions;
 using MediatR;
@@ -20,6 +21,7 @@ namespace Gradebook.App {
             services.AddScoped<IValidator<AddStudentCommand>, AddStudentCommandValidation>();
             services.AddScoped<IValidator<UpdateStudentCommand>, UpdateStudentCommandValidation>();
 
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof (CommandValidationBehavior<,>));
             services.AddTransient<ExceptionHandlingMiddleware>();
             return services;
         }

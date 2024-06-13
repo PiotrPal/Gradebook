@@ -26,7 +26,8 @@ namespace Gradebook.App.Middlewares {
             var statusCode = GetStatusCode(exception);
             var response = new {
                 title = exception.Message,
-                status = statusCode
+                status = statusCode,
+                errors = 
             };
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = statusCode;
@@ -39,6 +40,15 @@ namespace Gradebook.App.Middlewares {
                 ValidationException => StatusCodes.Status422UnprocessableEntity,
                 _ => StatusCodes.Status500InternalServerError
             };
+
+        //private static IReadOnlyDictionary<string, string[]> GerErrors(Exception exception) {
+        //    IReadOnlyDictionary<string, string[]> errors = null;
+
+        //    if(exception is ValidationException validationException) {
+        //        //errors = validationException
+        //        //errors = validationException.Errors.ToDictionary(x => x.PropertyName, x => x.ErrorMessage.Split("'
+        //    }
+        //}
     }
 }
 
